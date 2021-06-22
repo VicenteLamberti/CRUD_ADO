@@ -4,7 +4,7 @@
     ViewData["Title"] = "Detalhar";
 }
 
-<h2>Detalhes do produto</h2>
+<h2>DETALHES DO PRODUTO</h2>
 
 <div>
 
@@ -31,6 +31,6 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("EDITAR", "Editar", new { id = Model.Id }) |
-    <a asp-action="Listar">VOLTAR</a>
+    @Html.ActionLink("EDITAR", "Editar", new { id = Model.Id }, new { @class = "btn btn-warning" }) 
+    <a class="btn btn-secondary" asp-action="Listar">VOLTAR</a>
 </div>

@@ -42,9 +42,9 @@
                     @Html.DisplayFor(modelItem => item.Preco)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
-                    @Html.ActionLink("Detalhar", "Detalhar", new { id = item.Id }) |
-                    @Html.ActionLink("Excluir", "DeletarProduto", new { id = item.Id })
+                    @Html.ActionLink("EDITAR", "Editar", new { id = item.Id }, new {@class = "btn btn-warning" }) 
+                    @Html.ActionLink("DETALHAR", "Detalhar", new { id = item.Id }, new { @class = "btn btn-info" }) 
+                    @Html.ActionLink("EXCLUIR", "DeletarProduto", new { id = item.Id }, new { @class = "btn btn-danger" })
                 </td>
             </tr>
         }
