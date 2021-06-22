@@ -12,9 +12,18 @@ namespace CRUD_ADO.DAL.ProdutoDAL
 
         private SqliteConnection MetodoQueRetornaAConexao()
         {
-            return new SqliteConnection("Data Source=E:\\DEV\\PROJETOS\\CRUD_ADO\\BANCO_CRUD_ADO.db");
+            //return new SqliteConnection("Data Source=E:\\DEV\\PROJETOS\\CRUD_ADO\\BANCO_CRUD_ADO.db");
+            return new SqliteConnection("Data Source=C:\\Users\\vicente_leonardo\\Desktop\\Cursos\\Projetos\\CRUD_ADO_GEO\\BANCO_CRUD_ADO.db");
+
         }
-        public List<ProdutoModel> listarTodos()
+
+
+
+
+
+
+
+        public List<ProdutoModel> ListarTodos()
         {
             var conexao = MetodoQueRetornaAConexao();
 

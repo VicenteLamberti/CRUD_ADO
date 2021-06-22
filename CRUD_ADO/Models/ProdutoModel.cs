@@ -9,15 +9,15 @@ namespace CRUD_VICENTE.Models
 {
     public class ProdutoModel
     {
-        [DisplayName("Código")]
+        [DisplayName("CÓDIGO")]
         public int Id { get; set; }
 
-        [DisplayName("Nome do Produto")]
-        [Required(ErrorMessage = "Informe o nome do produto!")]
+        [DisplayName("NOME DO PRODUTO")]
+        [Required(ErrorMessage = "INFORME O NOME DO PRODUTO")]
         public string NomeProduto { get; set; }
 
-        [DisplayName("Preço")]
-        [Required(ErrorMessage = "Informe o preço do produto!")]
+        [DisplayName("PREÇO")]
+        [Required(ErrorMessage = "INFORME O PREÇO DO PRODUTO")]
         public double Preco { get; set; }
 
     }

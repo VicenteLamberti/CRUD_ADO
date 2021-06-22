@@ -11,17 +11,13 @@ namespace CRUD_ADO.DAL.ProdutoDAL
     {
         private SqliteConnection MetodoQueRetornaAConexao()
         {
-            return new SqliteConnection("Data Source=E:\\DEV\\PROJETOS\\CRUD_ADO\\BANCO_CRUD_ADO.db");
-        }
+            //return new SqliteConnection("Data Source=E:\\DEV\\PROJETOS\\CRUD_ADO\\BANCO_CRUD_ADO.db");
+            return new SqliteConnection("Data Source=C:\\Users\\vicente_leonardo\\Desktop\\Cursos\\Projetos\\CRUD_ADO_GEO\\BANCO_CRUD_ADO.db");
 
-        public ProdutoModel DeletarProduto(int id)
-        {
-            ReadProdutoDAL readDAL = new ReadProdutoDAL();
-            return readDAL.listarPorId(id);
         }
 
 
-        public void DeletarProdutoEfetivamente(ProdutoModel produto)
+        public void DeletarProdutoEfetivamente(int id)
         {
             var conexao = MetodoQueRetornaAConexao();
 
@@ -33,7 +29,7 @@ namespace CRUD_ADO.DAL.ProdutoDAL
 
                 using (var comando = new SqliteCommand(deleteQuery, conexao))
                 {
-                    comando.Parameters.AddWithValue("@id", produto.Id);
+                    comando.Parameters.AddWithValue("@id", id);
                     comando.ExecuteNonQuery();
                 }
             }
