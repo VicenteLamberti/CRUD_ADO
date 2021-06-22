@@ -1,26 +1,19 @@
 ﻿using CRUD_VICENTE.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.Sqlite;
-using Npgsql;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CRUD_VICENTE.DAL
+namespace CRUD_ADO.DAL.ProdutoDAL
 {
-
-
-    public class ProdutoDAL
+    public class ReadProdutoDAL
     {
 
         private SqliteConnection MetodoQueRetornaAConexao()
         {
             return new SqliteConnection("Data Source=E:\\DEV\\PROJETOS\\CRUD_ADO\\BANCO_CRUD_ADO.db");
         }
-
-
         public List<ProdutoModel> listarTodos()
         {
             var conexao = MetodoQueRetornaAConexao();
@@ -50,14 +43,9 @@ namespace CRUD_VICENTE.DAL
                 }
             }
 
-            
+
             return listaQueSeraORetorno;
         }
-
-
-       
-
-
 
 
 
@@ -88,75 +76,6 @@ namespace CRUD_VICENTE.DAL
             }
             return objetoQueSeraRetornado;
         }
-
-
-        public ProdutoModel DeletarProduto(int id)
-        {
-            return listarPorId(id);
-        }
-
-
-        public void InserirProduto(ProdutoModel produto)
-        {
-            var conexao = MetodoQueRetornaAConexao();
-            string inserirQuery = $"INSERT INTO produto (nome_produto, preco) VALUES (@nomeProduto, @precoProduto)";
-            using (conexao)
-            {
-                conexao.Open();
-                using (var comando = new SqliteCommand(inserirQuery, conexao))
-                {
-                    comando.Parameters.AddWithValue("@nomeProduto", produto.NomeProduto);
-                    comando.Parameters.AddWithValue("@precoProduto", produto.Preco);
-                    comando.ExecuteNonQuery();
-                }
-            }
-        }
-
-
-
-        public void DeletarProdutoEfetivamente(ProdutoModel produto)
-        {
-            var conexao = MetodoQueRetornaAConexao();
-
-            string deleteQuery = $"DELETE FROM produto WHERE id = @id";
-
-            using (conexao)
-            {
-                conexao.Open();
-
-                using (var comando = new SqliteCommand(deleteQuery, conexao))
-                {
-                    comando.Parameters.AddWithValue("@id", produto.Id);
-                    comando.ExecuteNonQuery();
-                }
-            }
-        }
-
-
-        public void EditarProduto(ProdutoModel prod)
-        {
-            var conexao = MetodoQueRetornaAConexao();
-            string editQuery = $"UPDATE produto SET nome_produto = @nomeProduto, preco = @precoProduto WHERE id = @id";
-            using (conexao)
-            {
-                conexao.Open();
-                using(var comando = new SqliteCommand(editQuery, conexao))
-                {
-                    comando.Parameters.AddWithValue("@nomeProduto", prod.NomeProduto);
-                    comando.Parameters.AddWithValue("@precoProduto", prod.Preco);
-                    comando.Parameters.AddWithValue("@id", prod.Id);
-                    comando.ExecuteNonQuery();
-
-                }
-
-            }
-
-        }
-
-
-
-
-
 
 
     }

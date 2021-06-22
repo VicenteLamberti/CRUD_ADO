@@ -9,7 +9,7 @@ namespace CRUD_VICENTE.DAL
 {
     public class GenericaDAL
     {
-        private SqliteConnection MetodoQueRetornaAConexao()
+        public SqliteConnection MetodoQueRetornaAConexao()
         {
             return new SqliteConnection("Data Source=E:\\DEV\\PROJETOS\\CRUD_ADO\\BANCO_CRUD_ADO.db");
         }

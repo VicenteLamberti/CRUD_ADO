@@ -1,4 +1,5 @@
-﻿using CRUD_ADO.Models;
+﻿using CRUD_ADO.DAL.ProdutoDAL;
+using CRUD_ADO.Models;
 using CRUD_VICENTE.DAL;
 using CRUD_VICENTE.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -45,30 +46,31 @@ namespace CRUD_VICENTE.Controllers
 
         public IActionResult DeletarProduto(int id)
         {
-            ProdutoModel prod = new ProdutoDAL().listarPorId(id);
+            ProdutoModel prod = new ReadProdutoDAL().listarPorId(id);
             return View(prod);
         }
 
         
         public IActionResult DeletarProdutoEfetivamente(int id)
         {
-            ProdutoDAL prod = new ProdutoDAL();
-            var produto = prod.listarPorId(id);
-            prod.DeletarProdutoEfetivamente(produto);
+            ReadProdutoDAL readProdutoDAL = new ReadProdutoDAL();
+            DeleteProdutoDAL deleteProdutoDAL = new DeleteProdutoDAL();
+            var produto = readProdutoDAL.listarPorId(id);
+            deleteProdutoDAL.DeletarProdutoEfetivamente(produto);
             return RedirectToAction("Listar");
         }
 
 
         public IActionResult Listar()
         {
-            List<ProdutoModel> prod = new ProdutoDAL().listarTodos();
+            List<ProdutoModel> prod = new ReadProdutoDAL().listarTodos();
 
             return View(prod);
         }
 
         public IActionResult Detalhar(int id)
         {
-            ProdutoModel prod = new ProdutoDAL().listarPorId(id);
+            ProdutoModel prod = new ReadProdutoDAL().listarPorId(id);
             return View(prod);
         }
 
@@ -80,10 +82,10 @@ namespace CRUD_VICENTE.Controllers
         [HttpPost, ActionName("Inserir")]
         public IActionResult Inserir(ProdutoModel produto)
         {
-            ProdutoDAL prod = new ProdutoDAL();
+            InsertProdutoDAL insertProdutoDAL = new InsertProdutoDAL();
             if (ModelState.IsValid)
             {
-                prod.InserirProduto(produto);
+                insertProdutoDAL.InserirProduto(produto);
 
                 return RedirectToAction("Listar");
             }
@@ -94,16 +96,16 @@ namespace CRUD_VICENTE.Controllers
 
         public IActionResult Editar(int id)
         {
-            ProdutoDAL prod = new ProdutoDAL();
-            var produto = prod.listarPorId(id);
+            ReadProdutoDAL readProdutoDAL = new ReadProdutoDAL();
+            var produto = readProdutoDAL.listarPorId(id);
             return View(produto);
         }
 
         [HttpPost,ActionName("Editar")]
         public IActionResult Editar(ProdutoModel produto )
         {
-            ProdutoDAL prod = new ProdutoDAL();
-            prod.EditarProduto(produto);
+            UpdateProdutoDAL updateProdutoDAL = new UpdateProdutoDAL();
+            updateProdutoDAL.EditarProduto(produto);
             return RedirectToAction("Listar");
         }
 
