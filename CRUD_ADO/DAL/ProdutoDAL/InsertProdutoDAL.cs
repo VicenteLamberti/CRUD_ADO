@@ -27,7 +27,7 @@ namespace CRUD_ADO.DAL.ProdutoDAL
         public void InserirProduto(ProdutoModel produto)
         {
             var conexao = MetodoQueRetornaAConexao();
-            string inserirQuery = $"INSERT INTO produto (nome_produto, preco) VALUES (@nomeProduto, @precoProduto)";
+            string inserirQuery = $"INSERT INTO produto (nome_produto, quantidade ,preco) VALUES (@nomeProduto,@quantidadeProduto, @precoProduto)";
             using (conexao)
             {
                 conexao.Open();
@@ -35,6 +35,7 @@ namespace CRUD_ADO.DAL.ProdutoDAL
                 {
                     comando.Parameters.AddWithValue("@nomeProduto", produto.NomeProduto);
                     comando.Parameters.AddWithValue("@precoProduto", produto.Preco);
+                    comando.Parameters.AddWithValue("@quantidadeProduto", produto.Quantidade);
                     comando.ExecuteNonQuery();
                 }
             }

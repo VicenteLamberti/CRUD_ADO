@@ -16,9 +16,15 @@ namespace CRUD_VICENTE.Models
         [Required(ErrorMessage = "INFORME O NOME DO PRODUTO")]
         public string NomeProduto { get; set; }
 
+        [DisplayName("QUANTIDADE")]
+        [Required(ErrorMessage = "INFORME A QUANTIDADE")]
+        public int Quantidade { get; set; }
+
         [DisplayName("PREÇO")]
         [Required(ErrorMessage = "INFORME O PREÇO DO PRODUTO")]
         public double Preco { get; set; }
+
+        
 
     }
 }
