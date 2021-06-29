@@ -4,10 +4,9 @@
     ViewData["Title"] = "AdicionarNoCarrinho";
 }
 
-<h1>AdicionarNoCarrinho</h1>
+<h1>ESTE PRODUTO SERÁ ADICIONADO NO CARRINHO</h1>
 
 <div>
-    <h4>ProdutoModel</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -31,11 +30,6 @@
     </dl>
 </div>
 <div>
-
-
-  
-    <a class="btn btn-success"  asp-action="ListarProdutosDoCarrinho">IR PARA O CARRINHO</a>
-
-    <a class="btn btn-secondary" asp-controller="CrudProduto" asp-action="Listar">CONTINUAR COMPRANDO</a>
-
+    <a class="btn btn-success" asp-controller="CrudProduto" asp-action="Listar">CONTINUAR COMPRANDO</a>
+    <a class="btn btn-secondary"  asp-action="ListarProdutosDoCarrinho">IR PARA O CARRINHO</a>
 </div>

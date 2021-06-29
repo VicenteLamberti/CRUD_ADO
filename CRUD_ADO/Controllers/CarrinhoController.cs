@@ -43,7 +43,10 @@ namespace CRUD_ADO.Controllers
         {
             ReadProdutoCarrinhoDAL prodCarrinho = new ReadProdutoCarrinhoDAL();
             UpdateProdutoDAL prodUpdateDAL = new UpdateProdutoDAL();
+            
             prodUpdateDAL.AtualizarQuantidadeProdutos();
+            DeleteProdutoCarrinhoDAL deleteProdutoCarrinhoDAL = new DeleteProdutoCarrinhoDAL();
+            deleteProdutoCarrinhoDAL.RemoverTodosProdutosCarrinho();
             var prods = prodCarrinho.GerarListaProdutosCarrinho();
             return View(prods);
         }

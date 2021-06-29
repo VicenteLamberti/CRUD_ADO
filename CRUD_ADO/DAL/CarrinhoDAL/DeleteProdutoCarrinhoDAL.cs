@@ -33,5 +33,24 @@ namespace CRUD_ADO.DAL.CarrinhoDAL
                 }
             }
         }
+
+        public void RemoverTodosProdutosCarrinho()
+        {
+            var conexao = MetodoQueRetornaAConexao();
+            ReadProdutoCarrinhoDAL readProdutoCarrinhoDAL = new ReadProdutoCarrinhoDAL();
+            string idsQuerySemVirgulaNoFinal = readProdutoCarrinhoDAL.RetornarIdsDosProdutos();
+            //string deleteQuery = $"DELETE FROM carrinho_produto WHERE id_produto IN (" + idsQuerySemVirgulaNoFinal + ")  AND id_usuario = 'vicente'";
+            string deleteQuery = $"DELETE FROM carrinho_produto WHERE id_usuario = 'vicente' ";
+
+            using (conexao)
+            {
+                conexao.Open();
+
+                using (var comando = new SqliteCommand(deleteQuery, conexao))
+                {
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

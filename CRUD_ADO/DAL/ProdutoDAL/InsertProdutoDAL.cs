@@ -33,7 +33,7 @@ namespace CRUD_ADO.DAL.ProdutoDAL
                 conexao.Open();
                 using (var comando = new SqliteCommand(inserirQuery, conexao))
                 {
-                    comando.Parameters.AddWithValue("@nomeProduto", produto.NomeProduto);
+                    comando.Parameters.AddWithValue("@nomeProduto", produto.NomeProduto.ToUpper());
                     comando.Parameters.AddWithValue("@precoProduto", produto.Preco);
                     comando.Parameters.AddWithValue("@quantidadeProduto", produto.Quantidade);
                     comando.ExecuteNonQuery();

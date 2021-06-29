@@ -42,6 +42,12 @@ namespace CRUD_VICENTE.Controllers
         }
 
 
+        public async Task<IActionResult> Login( )
+        {
+            return View();
+        }
+
+
       
     }
 }

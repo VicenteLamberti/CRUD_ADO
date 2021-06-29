@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +25,16 @@ namespace CRUD_ADO
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+
+
+
+    
+
+
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +52,18 @@ namespace CRUD_ADO
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+
+
+
+
+            app.UseAuthentication();
+
+
+
+
+
+
 
             app.UseRouting();
 
