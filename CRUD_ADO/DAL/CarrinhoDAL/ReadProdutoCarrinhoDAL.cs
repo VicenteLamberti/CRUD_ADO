@@ -16,6 +16,9 @@ namespace CRUD_ADO.DAL.CarrinhoDAL
             return new SqliteConnection("Data Source=C:\\Users\\vicente_leonardo\\Desktop\\Cursos\\Projetos\\CRUD_ADO_GEO\\BANCO_CRUD_ADO.db");
 
         }
+
+
+
         public List<ProdutoCarrinhoModel> ObterIdsProdutos()
         {
             var conexao = MetodoQueRetornaAConexao();
@@ -51,36 +54,7 @@ namespace CRUD_ADO.DAL.CarrinhoDAL
         {
             var conexao = MetodoQueRetornaAConexao();
 
-            var produtos = ObterIdsProdutos();
-            List<string> idsProdutos = new List<string>();
-
-            string idsQueryComVirgulaNoFinal = "";
-
-
-            foreach (var produto in produtos)
-            {
-                idsProdutos.Add(produto.IdProduto.ToString());
-            }
-
-
-            foreach (var id in idsProdutos)
-            {
-                idsQueryComVirgulaNoFinal += id;
-                idsQueryComVirgulaNoFinal += ",";
-            }
-
-            string idsQuerySemVirgulaNoFinal = "";
-            if (String.IsNullOrEmpty(idsQueryComVirgulaNoFinal))
-            {
-                idsQuerySemVirgulaNoFinal = "0";
-            }
-            else
-            {
-                idsQuerySemVirgulaNoFinal = idsQueryComVirgulaNoFinal.Substring(0, idsQueryComVirgulaNoFinal.Length - 1);
-            }
-            
-
-
+            string idsQuerySemVirgulaNoFinal = RetornarIdsDosProdutos();
 
 
 
@@ -113,5 +87,40 @@ namespace CRUD_ADO.DAL.CarrinhoDAL
 
             return listaQueSeraORetorno;
         }
+
+
+        public string RetornarIdsDosProdutos()
+        {
+            List<string> idsProdutos = new List<string>();
+
+            string idsQueryComVirgulaNoFinal = "";
+
+            var produtos = ObterIdsProdutos();
+
+            foreach (var produto in produtos)
+            {
+                idsProdutos.Add(produto.IdProduto.ToString());
+            }
+
+
+            foreach (var id in idsProdutos)
+            {
+                idsQueryComVirgulaNoFinal += id;
+                idsQueryComVirgulaNoFinal += ",";
+            }
+
+            string idsQuerySemVirgulaNoFinal = "";
+            if (String.IsNullOrEmpty(idsQueryComVirgulaNoFinal))
+            {
+                idsQuerySemVirgulaNoFinal = "0";
+            }
+            else
+            {
+                idsQuerySemVirgulaNoFinal = idsQueryComVirgulaNoFinal.Substring(0, idsQueryComVirgulaNoFinal.Length - 1);
+            }
+
+            return idsQuerySemVirgulaNoFinal;
+        }
+
     }
 }

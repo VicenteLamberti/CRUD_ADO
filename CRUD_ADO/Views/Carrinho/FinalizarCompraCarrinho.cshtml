@@ -1,0 +1,57 @@
+﻿@model IEnumerable<CRUD_VICENTE.Models.ProdutoModel>
+
+@{
+    ViewData["Title"] = "ListarProdutosDoCarrinho";
+}
+
+<h1>FINALIZAR COMPRA</h1>
+
+<p>
+    <a class="btn btn-primary" asp-controller="CrudProduto" asp-action="Listar">CONTINUAR COMPRANDO</a>
+    <a class="btn btn-success" asp-action="FinalizarCompraCarrinho">FINALIZAR COMPRA</a>
+
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Preco)
+                </td>
+                <td asp-action="">
+                    @Html.ActionLink("DETALHAR", "Detalhar", "CrudProduto", new { id = item.Id }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("REMOVER DO CARRINHO", "RemoverDoCarrinho", new { idProduto = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@*<form asp-action="DeletarProduto">
+        <input type="submit" value="EXCLUIR PRODUTO" class="btn btn-danger" />
+        <a asp-action="Listar" class="btn btn-secondary">VOLTAR</a>
+    </form>*@

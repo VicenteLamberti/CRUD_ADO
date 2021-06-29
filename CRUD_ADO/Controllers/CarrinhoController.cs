@@ -37,5 +37,15 @@ namespace CRUD_ADO.Controllers
             delProdCarrinhoDAL.RemoverProdutoCarrinho(idProduto);
             return RedirectToAction("ListarProdutosDoCarrinho");
         }
+
+
+        public IActionResult FinalizarCompraCarrinho()
+        {
+            ReadProdutoCarrinhoDAL prodCarrinho = new ReadProdutoCarrinhoDAL();
+            UpdateProdutoDAL prodUpdateDAL = new UpdateProdutoDAL();
+            prodUpdateDAL.AtualizarQuantidadeProdutos();
+            var prods = prodCarrinho.GerarListaProdutosCarrinho();
+            return View(prods);
+        }
     }
 }
