@@ -23,8 +23,11 @@ namespace CRUD_ADO.Controllers
         [HttpPost]
         public async Task<IActionResult> LogarEfetivamente(UserModel userModel)
         {
-
-            var a = IsUserAuthenticated(userModel);
+            if(userModel == null)
+            {
+                return RedirectToAction("Logar");
+            }
+            bool autenticado = IsUserAuthenticated(userModel);
 
 
             if (ModelState.IsValid != true)
