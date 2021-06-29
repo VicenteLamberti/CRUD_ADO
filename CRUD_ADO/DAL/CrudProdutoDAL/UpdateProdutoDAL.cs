@@ -1,5 +1,5 @@
 ﻿using CRUD_ADO.DAL.CarrinhoDAL;
-using CRUD_VICENTE.Models;
+using CRUD_ADO.Models;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;

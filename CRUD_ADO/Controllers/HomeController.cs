@@ -1,7 +1,7 @@
 ﻿using CRUD_ADO.DAL.ProdutoDAL;
 using CRUD_ADO.Models;
-using CRUD_VICENTE.DAL;
-using CRUD_VICENTE.Models;
+using CRUD_ADO.DAL;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -9,9 +9,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace CRUD_VICENTE.Controllers
+namespace CRUD_ADO.Controllers
 {
     public class HomeController : Controller
     {
@@ -42,13 +43,7 @@ namespace CRUD_VICENTE.Controllers
         }
 
 
-        public async Task<IActionResult> Login( )
-        {
-            return View();
-        }
-
-
-      
+        
     }
 }
 

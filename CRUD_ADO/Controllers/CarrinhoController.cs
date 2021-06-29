@@ -1,6 +1,6 @@
 ﻿using CRUD_ADO.DAL.ProdutoDAL;
 using CRUD_ADO.DAL.CarrinhoDAL;
-using CRUD_VICENTE.Models;
+using CRUD_ADO.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CRUD_ADO.Controllers
 {
-    public class CarrinhoController : Controller
+    public class CarrinhoController : PrincipalController
     {
         public IActionResult Index()
         {

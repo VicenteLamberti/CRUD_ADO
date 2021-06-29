@@ -26,10 +26,15 @@ namespace CRUD_ADO
         {
             services.AddControllersWithViews();
 
+            services.AddAuthentication("DefaultSchemeCookieCRUD").AddCookie("DefaultSchemeCookieCRUD",opt =>
+            {
+                opt.Cookie.Name = "NameCookieCRUD";
+                opt.LoginPath = "/Login/Logar";
+                opt.AccessDeniedPath = "/Login/Logar";
+            });
 
 
-
-    
+                
 
 
 

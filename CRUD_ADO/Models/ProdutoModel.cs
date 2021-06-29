@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CRUD_VICENTE.Models
+namespace CRUD_ADO.Models
 {
     public class ProdutoModel
     {

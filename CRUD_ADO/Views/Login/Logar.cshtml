@@ -1,0 +1,28 @@
+﻿@model CRUD_ADO.Models.UserModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Logar">
+            <div class="form-group">
+                <label asp-for="UserName">USUÁRIO:</label>
+                <input asp-for="UserName" type="text" name="UserName" value="" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">SENHA:</label>
+                <input asp-for="Password" type="password" name="Password" value="" />
+            </div>
+           
+            
+            <button type="submit">Logar</button>
+        </form>
+
+
+
+    </div>
+</div>

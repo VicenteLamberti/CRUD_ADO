@@ -1,5 +1,4 @@
 ﻿using CRUD_ADO.Models;
-using CRUD_VICENTE.Models;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;

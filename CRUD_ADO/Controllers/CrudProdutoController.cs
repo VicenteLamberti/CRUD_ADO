@@ -1,5 +1,6 @@
 ﻿using CRUD_ADO.DAL.ProdutoDAL;
-using CRUD_VICENTE.Models;
+using CRUD_ADO.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CRUD_ADO.Controllers
 {
-    public class CrudProdutoController : Controller
+    public class CrudProdutoController : PrincipalController
     {
         public IActionResult Index()
         {
@@ -30,6 +31,7 @@ namespace CRUD_ADO.Controllers
             return RedirectToAction("Listar");
         }
 
+        [Authorize]
 
         public IActionResult Listar()
         {
