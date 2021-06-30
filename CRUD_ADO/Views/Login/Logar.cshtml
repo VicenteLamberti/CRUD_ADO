@@ -6,25 +6,23 @@
 
 
 
-<div class="row">
-    <div class="col-md-4">
+<div class="row ">
+    <div class="col-md-4 m-auto">
         <form asp-action="Logar">
             <div class="form-group">
                 <label asp-for="UserName">USUÁRIO</label>
-                <input asp-for="UserName" type="text" name="UserName" value="" />
+                <input asp-for="UserName" type="text" name="UserName" value="" class="form-control" placeholder="DIGITE SEU E-MAIL" />
             </div>
             <div class="form-group">
                 <label asp-for="Password">SENHA</label>
-                <input asp-for="Password" type="password" name="Password" value="" />
+                <input asp-for="Password" type="password" name="Password" value="" class="form-control" placeholder="DIGITE SUA SENHA" />
             </div>
-            
-
-
-            <button class="btn btn-success" type="submit">ENTRAR</button>
+            <div class="mt-1">
+                <button class="btn btn-success" type="submit">ENTRAR</button>
+                <button class="btn btn-primary" asp-action="AlterarSenhaEsquecida">ESQUECI A SENHA</button>
+            </div>
         </form>
-        <button class="btn btn-primary" type="">ESQUECI A SENHA</button>
-
-
-
     </div>
 </div>
+
+
