@@ -29,9 +29,7 @@
                         <li>
                             <a class="nav-link text-dark" asp-area="" asp-controller="CrudProduto" asp-action="Listar">LISTAGEM DE PRODUTOS</a>
                         </li>
-                        <li>
-                            <a class="nav-link text-dark" asp-controller="Carrinho" asp-action="ListarProdutosDoCarrinho">CARRINHO DE COMPRAS</a>
-                        </li>
+                   
                         @if (this.User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item dropdown">
@@ -39,7 +37,12 @@
                                     AQUI
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="nav-link text-dark dropdown-item" asp-controller="Login" asp-action="Deslogar">SAIR</a></li>
+                                    <li>
+                                        <a class="nav-link text-dark" asp-controller="Carrinho" asp-action="ListarProdutosDoCarrinho">CARRINHO DE COMPRAS</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-dark dropdown-item" asp-controller="Login" asp-action="Deslogar">SAIR</a>
+                                    </li>
                                 </ul>
                             </li>
                         }
