@@ -8,14 +8,9 @@ using System.Threading.Tasks;
 
 namespace CRUD_ADO.DAL.ProdutoDAL
 {
-    public class UpdateProdutoDAL
+    public class UpdateProdutoDAL : GenericaDAL
     {
-        private SqliteConnection MetodoQueRetornaAConexao()
-        {
-            //return new SqliteConnection("Data Source=E:\\DEV\\PROJETOS\\CRUD_ADO\\BANCO_CRUD_ADO.db");
-            return new SqliteConnection("Data Source=C:\\Users\\vicente_leonardo\\Desktop\\Cursos\\Projetos\\CRUD_ADO_GEO\\BANCO_CRUD_ADO.db");
-
-        }
+        
 
         public void EditarProduto(ProdutoModel prod)
         {
@@ -40,16 +35,24 @@ namespace CRUD_ADO.DAL.ProdutoDAL
             var conexao = MetodoQueRetornaAConexao();
             ReadProdutoCarrinhoDAL readCarrinhoDAL = new ReadProdutoCarrinhoDAL();
             string idsQuerySemVirgulaNoFinal = readCarrinhoDAL.RetornarIdsDosProdutos();
-
-            string editQuery = $"UPDATE produto SET quantidade = ( (SELECT quantidade FROM produto WHERE id IN (" + idsQuerySemVirgulaNoFinal + ")) -1 ) WHERE id IN (" + idsQuerySemVirgulaNoFinal + ")";
-            using (conexao)
+            string[] arridsQuerySemVirgulaNoFinal = idsQuerySemVirgulaNoFinal.Split(',');
+            foreach(string ids in arridsQuerySemVirgulaNoFinal)
             {
-                conexao.Open();
-                using (var comando = new SqliteCommand(editQuery, conexao))
+                string editQuery = $"UPDATE produto SET quantidade = (SELECT quantidade FROM produto WHERE id ={ids})-1 WHERE id = {ids}";
+                using (conexao)
                 {
-                    comando.ExecuteNonQuery();
+                    conexao.Open();
+                    using (var comando = new SqliteCommand(editQuery, conexao))
+                    {
+                        comando.ExecuteNonQuery();
+                    }
                 }
             }
+
+
+
+
+            
         }
 
 

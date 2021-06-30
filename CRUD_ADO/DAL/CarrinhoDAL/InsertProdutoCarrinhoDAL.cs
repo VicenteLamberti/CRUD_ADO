@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace CRUD_ADO.DAL.CarrinhoDAL
 {
-    public class InsertProdutoCarrinhoDAL
+    public class InsertProdutoCarrinhoDAL:GenericaDAL
     {
-        private SqliteConnection MetodoQueRetornaAConexao()
-        {
-            //return new SqliteConnection("Data Source=E:\\DEV\\PROJETOS\\CRUD_ADO\\BANCO_CRUD_ADO.db");
-            return new SqliteConnection("Data Source=C:\\Users\\vicente_leonardo\\Desktop\\Cursos\\Projetos\\CRUD_ADO_GEO\\BANCO_CRUD_ADO.db");
-
-        }
+       
 
 
        public void InsertProdutoCarrinho(int id, string usuario)

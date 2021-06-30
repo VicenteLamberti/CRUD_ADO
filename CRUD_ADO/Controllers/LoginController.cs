@@ -18,12 +18,11 @@ namespace CRUD_ADO.Controllers
             return View();
         }
 
-
         [HttpPost, ActionName("Logar")]
         [HttpPost]
         public async Task<IActionResult> LogarEfetivamente(UserModel userModel)
         {
-            if(userModel == null)
+            if (userModel == null)
             {
                 return RedirectToAction("Logar");
             }
@@ -41,22 +40,38 @@ namespace CRUD_ADO.Controllers
                 return View();
             }
 
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name,userModel.UserName)
-            };
+            ReadLoginDAL readLoginDAL = new ReadLoginDAL();
 
-            var userIdentity = new ClaimsIdentity(claims, "login");
-            ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
-            await HttpContext.SignInAsync(principal);
-            return Redirect("/");
+            UserModel userModelUserPermissao = readLoginDAL.GetUser(userModel.UserName);
+            return await AdicionarCookie(userModelUserPermissao);
+
         }
 
         public bool IsUserAuthenticated(UserModel userModel)
         {
             ReadLoginDAL readLoginDAL = new ReadLoginDAL();
-
             return readLoginDAL.VerificarSeExisteUsuarioNoBanco(userModel);
+        }
+
+        public async Task<IActionResult> Deslogar()
+        {
+            await HttpContext.SignOutAsync();
+            return Redirect("/Home/Index");
+        }
+
+
+        public async Task<ActionResult> AdicionarCookie(UserModel userModel)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, userModel.UserName),
+                new Claim(ClaimTypes.Role, userModel.Permissao)
+            };
+            var userIdentity = new ClaimsIdentity(claims, "DefaultSchemeCookieCRUD");
+            ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
+            await HttpContext.SignInAsync(principal);
+            return Redirect("/Home/Index");
+
         }
     }
 }

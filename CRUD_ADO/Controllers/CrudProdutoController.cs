@@ -46,6 +46,7 @@ namespace CRUD_ADO.Controllers
             return View(prod);
         }
 
+        [Authorize(Roles = "admin")]
         public IActionResult Inserir()
         {
             return View();
@@ -89,3 +90,6 @@ namespace CRUD_ADO.Controllers
 
     }
 }
+
+
+

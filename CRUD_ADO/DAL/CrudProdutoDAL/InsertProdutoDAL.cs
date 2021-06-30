@@ -1,4 +1,5 @@
 ﻿using CRUD_ADO.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
@@ -7,22 +8,8 @@ using System.Threading.Tasks;
 
 namespace CRUD_ADO.DAL.ProdutoDAL
 {
-    public class InsertProdutoDAL
+    public class InsertProdutoDAL : GenericaDAL
     {
-        private SqliteConnection MetodoQueRetornaAConexao()
-        {
-            //return new SqliteConnection("Data Source=E:\\DEV\\PROJETOS\\CRUD_ADO\\BANCO_CRUD_ADO.db");
-            return new SqliteConnection("Data Source=C:\\Users\\vicente_leonardo\\Desktop\\Cursos\\Projetos\\CRUD_ADO_GEO\\BANCO_CRUD_ADO.db");
-        }
-
-
-
-
-
-
-
-
-
         public void InserirProduto(ProdutoModel produto)
         {
             var conexao = MetodoQueRetornaAConexao();

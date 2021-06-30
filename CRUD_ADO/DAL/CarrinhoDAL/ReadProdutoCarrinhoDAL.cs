@@ -7,14 +7,9 @@ using System.Threading.Tasks;
 
 namespace CRUD_ADO.DAL.CarrinhoDAL
 {
-    public class ReadProdutoCarrinhoDAL
+    public class ReadProdutoCarrinhoDAL:GenericaDAL
     {
-        private SqliteConnection MetodoQueRetornaAConexao()
-        {
-            //return new SqliteConnection("Data Source=E:\\DEV\\PROJETOS\\CRUD_ADO\\BANCO_CRUD_ADO.db");
-            return new SqliteConnection("Data Source=C:\\Users\\vicente_leonardo\\Desktop\\Cursos\\Projetos\\CRUD_ADO_GEO\\BANCO_CRUD_ADO.db");
-
-        }
+        
 
 
 
@@ -61,7 +56,7 @@ namespace CRUD_ADO.DAL.CarrinhoDAL
             List<ProdutoModel> listaQueSeraORetorno = new List<ProdutoModel>();
 
 
-            string selectQuery = $"SELECT * FROM produto WHERE id in (" + idsQuerySemVirgulaNoFinal + ") ";
+            string selectQuery = $"SELECT * FROM produto p INNER JOIN carrinho_produto c ON p.id == c.id_produto WHERE id_usuario = 'vicente' ";
             using (conexao)
             {
                 conexao.Open();

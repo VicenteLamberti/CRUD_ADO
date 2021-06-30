@@ -9,7 +9,6 @@
 <p>
     <a class="btn btn-primary" asp-controller="CrudProduto" asp-action="Listar">CONTINUAR COMPRANDO</a>
     <a class="btn btn-success" asp-action="FinalizarCompraCarrinho">FINALIZAR COMPRA</a>
-
 </p>
 
 <table class="table">
@@ -28,7 +27,8 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model) 
+{
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)
@@ -41,9 +41,8 @@
             </td>
             <td asp-action="">
                 @Html.ActionLink("DETALHAR", "Detalhar", "CrudProduto", new { id = item.Id }, new { @class = "btn btn-info" })
-                @Html.ActionLink("REMOVER DO CARRINHO", "RemoverDoCarrinho", new { idProduto = item.Id }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("REMOVER DO CARRINHO", "RemoverDoCarrinho", new { id = item.Id }, new { @class = "btn btn-danger" })
             </td>
-
         </tr>
 }
     </tbody>

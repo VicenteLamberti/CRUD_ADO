@@ -31,10 +31,10 @@ namespace CRUD_ADO.Controllers
             return View(prods);
         }
 
-        public IActionResult RemoverDoCarrinho(int idProduto)
+        public IActionResult RemoverDoCarrinho(int id)
         {
             DeleteProdutoCarrinhoDAL delProdCarrinhoDAL = new DeleteProdutoCarrinhoDAL();
-            delProdCarrinhoDAL.RemoverProdutoCarrinho(idProduto);
+            delProdCarrinhoDAL.RemoverProdutoCarrinho(id);
             return RedirectToAction("ListarProdutosDoCarrinho");
         }
 

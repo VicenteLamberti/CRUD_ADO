@@ -7,14 +7,9 @@ using System.Threading.Tasks;
 
 namespace CRUD_ADO.DAL.LoginDAL
 {
-    public class ReadLoginDAL
+    public class ReadLoginDAL: GenericaDAL
     {
-        private SqliteConnection MetodoQueRetornaAConexao()
-        {
-            //return new SqliteConnection("Data Source=E:\\DEV\\PROJETOS\\CRUD_ADO\\BANCO_CRUD_ADO.db");
-            return new SqliteConnection("Data Source=C:\\Users\\vicente_leonardo\\Desktop\\Cursos\\Projetos\\CRUD_ADO_GEO\\BANCO_CRUD_ADO.db");
-
-        }
+       
 
 
         public bool VerificarSeExisteUsuarioNoBanco(UserModel userModel)
@@ -39,9 +34,38 @@ namespace CRUD_ADO.DAL.LoginDAL
             return existeUsuario;
         }
 
+        public UserModel GetUser (string userName)
+        {
+            var conexao = MetodoQueRetornaAConexao();
+
+            UserModel user = new UserModel();
+            string selectQuery = $"SELECT * FROM user WHERE user_name = @userName";
+            using (conexao)
+            {
+                conexao.Open();
+                using (SqliteCommand comando = new SqliteCommand(selectQuery, conexao))
+                {
+                    comando.Parameters.AddWithValue("@userName", userName);
+
+                    var reader = comando.ExecuteReader();
+                    if(reader.HasRows)
+                    {
+                        reader.Read();
+                        user.UserName = reader["user_name"].ToString();
+                        user.Permissao = reader["permissao"].ToString();
+                    }
+                    else
+                    {
+                        //colocar validacao
+                    }
+                   
+
+                }
+            }
+            return user;
+        }
+
     }
 }
-
-
 
 
