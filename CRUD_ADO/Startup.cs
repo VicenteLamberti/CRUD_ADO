@@ -30,7 +30,8 @@ namespace CRUD_ADO
             {
                 opt.Cookie.Name = "NameCookieCRUD";
                 opt.LoginPath = "/Login/Logar";
-                opt.AccessDeniedPath = "/Login/Logar";
+                opt.AccessDeniedPath = "/CrudProduto/Listar";
+                opt.ExpireTimeSpan = new TimeSpan(0, 30, 0);
             });
 
 

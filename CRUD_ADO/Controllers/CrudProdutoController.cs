@@ -16,12 +16,14 @@ namespace CRUD_ADO.Controllers
             return View();
         }
 
+        [Authorize(Roles = "admin")]
         public IActionResult DeletarProduto(int id)
         {
             ProdutoModel prod = new ReadProdutoDAL().listarPorId(id);
             return View(prod);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost,ActionName("DeletarProduto")] //FAZENDO DESSA FORMA ELE EXCLUI USANDO O ID USANDO NO METODO DELETARPRODUTO
         [HttpPost]
         public IActionResult DeletarProdutoEfetivamente(int id)
@@ -52,6 +54,8 @@ namespace CRUD_ADO.Controllers
             return View();
         }
 
+
+        [Authorize(Roles = "admin")]
         [HttpPost, ActionName("Inserir")]
         [HttpPost]
         public IActionResult InserirEfetivamente(ProdutoModel produto)
@@ -67,7 +71,7 @@ namespace CRUD_ADO.Controllers
             return RedirectToAction("Listar");
         }
 
-
+        [Authorize(Roles ="admin")]
         public IActionResult Editar(int id)
         {
             ReadProdutoDAL readProdutoDAL = new ReadProdutoDAL();
@@ -75,6 +79,8 @@ namespace CRUD_ADO.Controllers
             return View(produto);
         }
 
+
+        [Authorize(Roles = "admin")]
         [HttpPost, ActionName("Editar")]
         public IActionResult Editar(ProdutoModel produto)
         {
