@@ -40,7 +40,7 @@
                 @Html.DisplayFor(modelItem => item.Preco)
             </td>
             <td asp-action="">
-                @Html.ActionLink("DETALHAR", "Detalhar", "CrudProduto", new { id = item.Id }, new { @class = "btn btn-info" })
+                @Html.ActionLink("DETALHAR", "Detalhar", "CrudProduto", new { id = item.Id }, new { @class = "btn btn-primary" })
                 @Html.ActionLink("REMOVER DO CARRINHO", "RemoverDoCarrinho", new { id = item.Id }, new { @class = "btn btn-danger" })
             </td>
         </tr>

@@ -65,7 +65,8 @@ namespace CRUD_ADO.Controllers
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, userModel.UserName),
-                new Claim(ClaimTypes.Role, userModel.Permissao)
+                new Claim(ClaimTypes.Role, userModel.Permissao),
+                new Claim(ClaimTypes.Name, userModel.UserName)
             };
             var userIdentity = new ClaimsIdentity(claims, "DefaultSchemeCookieCRUD");
             ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);

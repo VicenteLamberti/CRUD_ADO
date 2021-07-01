@@ -73,6 +73,7 @@ namespace CRUD_ADO.DAL.ProdutoDAL
                         {
                             Id = Convert.ToInt32(reader["id"]),
                             NomeProduto = reader["nome_produto"].ToString(),
+                            Quantidade = Convert.ToInt32(reader["quantidade"]),
                             Preco = Convert.ToDouble(reader["preco"])
                         };
                     }
