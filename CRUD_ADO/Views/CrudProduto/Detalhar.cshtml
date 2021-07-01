@@ -37,7 +37,10 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("EDITAR", "Editar", new { id = Model.Id }, new { @class = "btn btn-warning" })
+    @if (this.User.IsInRole("admin"))
+    {
+        @Html.ActionLink("EDITAR", "Editar", new { id = Model.Id }, new { @class = "btn btn-warning" })
+    }
 
     <a class="btn btn-secondary" asp-action="Listar">VOLTAR</a>
 </div>
