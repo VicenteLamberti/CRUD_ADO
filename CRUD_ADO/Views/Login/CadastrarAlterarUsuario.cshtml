@@ -1,0 +1,67 @@
+﻿@model CRUD_ADO.Models.UserModel
+
+@{
+    ViewData["Title"] = "CadastrarUsuario";
+}
+
+<h1>INSIRA OS DADOS</h1>
+
+@*<h4>UserModel</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="CadastrarUsuario">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Permissao" class="control-label"></label>
+                    <input asp-for="Permissao" class="form-control" />
+                    <span asp-validation-for="Permissao" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>*@
+
+<div class="row ">
+    <div class="col-md-4 m-auto">
+        <form asp-action="CadastrarAlterarUsuarioDefinitivamente">
+            <div class="form-group">
+                <label asp-for="UserName">USUÁRIO</label>
+                <input asp-for="UserName" type="text" name="UserName" value="" class="form-control" placeholder="DIGITE O NOME QUE SERÁ SEU USUÁRIO" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">SENHA</label>
+                <input asp-for="Password" type="password" name="Password" value="" class="form-control" placeholder="DIGITE SUA SENHA" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Email">EMAIL</label>
+                <input asp-for="Email" type="text" name="email" value="" class="form-control" placeholder="DIGITE SEU EMAIL" />
+            </div>
+            <div class="mt-1">
+                <button class="btn btn-success" type="submit">CADASTRAR/ALTERAR</button>
+            </div>
+        </form>
+    </div>
+</div>
+

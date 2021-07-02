@@ -74,5 +74,29 @@ namespace CRUD_ADO.Controllers
             return Redirect("/Home/Index");
 
         }
+
+        public IActionResult CadastrarAlterarUsuario()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult CadastrarAlterarUsuarioDefinitivamente(UserModel userModel)
+        {
+
+            ReadLoginDAL readLoginDAL = new ReadLoginDAL();
+            bool existeUsuario = readLoginDAL.VerificarSeExisteUsuarioNoBanco(userModel);
+            if (existeUsuario)
+            {
+
+                return Redirect("/Home/Index");
+            }
+
+
+            InsertLoginDAL insertLoginDAL = new InsertLoginDAL();
+            insertLoginDAL.CriarNovoUsuario(userModel);
+            return Redirect("/Home/Index");
+        }
     }
 }

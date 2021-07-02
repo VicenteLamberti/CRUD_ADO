@@ -31,11 +31,18 @@
             <div class="form-group">
                 <input type="submit" value="Cadastrar" class="btn btn-success" />
                 <a asp-action="Listar" class="btn btn-secondary">VOLTAR</a>
-
             </div>
         </form>
     </div>
 </div>
+
+<form id="Form1" method="post" runat="server" EncType="multipart/form-data" action="WebForm1.aspx">
+    Image file to upload to the server: <INPUT id="oFile" type="file" runat="server" NAME="oFile">
+    <asp:button id="btnUpload" type="submit" text="Upload" runat="server"></asp:button>
+    <asp:Panel ID="frmConfirmation" Visible="False" Runat="server">
+        <asp:Label id="lblUploadResult" Runat="server"></asp:Label>
+    </asp:Panel>
+</form>
 
 <!--<div>-->
 @*<a asp-action="Listar">VOLTAR</a>*@
