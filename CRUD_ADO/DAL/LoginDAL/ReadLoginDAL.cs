@@ -65,6 +65,31 @@ namespace CRUD_ADO.DAL.LoginDAL
             return user;
         }
 
+
+        public bool GetUserPorEmail(string email)
+        {
+            var conexao = MetodoQueRetornaAConexao();
+            bool existeUsuario;
+            UserModel user = new UserModel();
+            string selectQuery = $"SELECT * FROM user WHERE email = @email";
+            using (conexao)
+            {
+                conexao.Open();
+                using (SqliteCommand comando = new SqliteCommand(selectQuery, conexao))
+                {
+                    comando.Parameters.AddWithValue("@email", email);
+
+                    var reader = comando.ExecuteReader();
+                    existeUsuario = reader.HasRows;
+
+
+                }
+            }
+            return existeUsuario;
+        }
+
+
+
     }
 }
 

@@ -75,14 +75,14 @@ namespace CRUD_ADO.Controllers
 
         }
 
-        public IActionResult CadastrarAlterarUsuario()
+        public IActionResult CadastrarUsuario()
         {
             return View();
         }
 
 
         [HttpPost]
-        public IActionResult CadastrarAlterarUsuarioDefinitivamente(UserModel userModel)
+        public IActionResult CadastrarUsuarioDefinitivamente(UserModel userModel)
         {
 
             ReadLoginDAL readLoginDAL = new ReadLoginDAL();
@@ -90,7 +90,7 @@ namespace CRUD_ADO.Controllers
             if (existeUsuario)
             {
 
-                return Redirect("/Home/Index");
+                //adicionarvalidadacao
             }
 
 
@@ -98,5 +98,31 @@ namespace CRUD_ADO.Controllers
             insertLoginDAL.CriarNovoUsuario(userModel);
             return Redirect("/Home/Index");
         }
+
+        public IActionResult AlterarSenhaEUsuario()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AlterarSenhaEUsuarioDefinitivamente(string email)
+        {
+            ReadLoginDAL readLoginDAL = new ReadLoginDAL();
+            bool existeUsuario = readLoginDAL.GetUserPorEmail(email);
+            if (existeUsuario)
+            {
+                ViewBag(email);
+                return Redirect("/Login/RecuperarUsuario");
+            }
+            return Redirect("/Login/Index");
+
+        }
+
+        public IActionResult RecuperarUsuario()
+        {
+            return View();
+        }
+
+
     }
 }

@@ -1,0 +1,32 @@
+﻿@model CRUD_ADO.Models.UserModel
+
+@{
+    ViewData["Title"] = "CadastrarUsuario";
+}
+
+<h1>INSIRA OS DADOS</h1>
+
+
+
+<div class="row ">
+    <div class="col-md-4 m-auto">
+        <form asp-action="CadastrarUsuarioDefinitivamente">
+            <div class="form-group">
+                <label asp-for="UserName">USUÁRIO</label>
+                <input asp-for="UserName" type="text" name="UserName" value="" class="form-control" placeholder="DIGITE O NOME DE USUÁRIO" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">SENHA</label>
+                <input asp-for="Password" type="password" name="Password" value="" class="form-control" placeholder="DIGITE SUA SENHA" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Email">EMAIL</label>
+                <input asp-for="Email" type="text" name="email" value="" class="form-control" placeholder="DIGITE SEU EMAIL" />
+            </div>
+            <div class="mt-1">
+                <button class="btn btn-success" type="submit">CADASTRAR</button>
+            </div>
+        </form>
+    </div>
+</div>
+
