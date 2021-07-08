@@ -10,9 +10,9 @@ namespace CRUD_ADO.Controllers
     [Authorize]
     public class PrincipalController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
     }
 }
