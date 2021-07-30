@@ -17,6 +17,11 @@ namespace CRUD_ADO.DAL.LoginDAL
             var conexao = MetodoQueRetornaAConexao();
             bool existeUsuario;
 
+            if (string.IsNullOrWhiteSpace(userModel.UserName) || string.IsNullOrWhiteSpace(userModel.Password))
+            {
+                return false;
+            }
+
             string selectQuery = $"SELECT * FROM user WHERE user_name = @userName AND password = @pass";
             using (conexao)
             {

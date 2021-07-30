@@ -22,6 +22,11 @@ namespace CRUD_ADO.Controllers
         [HttpPost]
         public async Task<IActionResult> LogarEfetivamente(UserModel userModel)
         {
+            if (ModelState.IsValid != true)
+            {
+                return View();
+            }
+
             if (userModel == null)
             {
                 return RedirectToAction(nameof(Logar));
@@ -29,10 +34,7 @@ namespace CRUD_ADO.Controllers
             bool autenticado = IsUserAuthenticated(userModel);
 
 
-            if (ModelState.IsValid != true)
-            {
-                return View();
-            }
+            
 
             if ((IsUserAuthenticated(userModel) != true) || String.IsNullOrEmpty(userModel.UserName) || String.IsNullOrEmpty(userModel.UserName))
             {
@@ -89,8 +91,7 @@ namespace CRUD_ADO.Controllers
             bool existeUsuario = readLoginDAL.VerificarSeExisteUsuarioNoBanco(userModel);
             if (existeUsuario)
             {
-
-                //adicionarvalidadacao
+                return View("/Login/Index");
             }
 
 
