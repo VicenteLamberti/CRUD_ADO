@@ -30,7 +30,7 @@ namespace CRUD_ADO.Controllers
         {
             DeleteProdutoDAL deleteProdutoDAL = new DeleteProdutoDAL();
             deleteProdutoDAL.DeletarProdutoEfetivamente(id);
-            return RedirectToAction("Listar");
+            return RedirectToAction(nameof(Listar));
         }
 
         [Authorize]
@@ -65,7 +65,7 @@ namespace CRUD_ADO.Controllers
             {
                 insertProdutoDAL.InserirProduto(produto);
 
-                return RedirectToAction("Listar");
+                return RedirectToAction(nameof(Listar));
             }
 
             return RedirectToAction("Listar");
@@ -86,7 +86,7 @@ namespace CRUD_ADO.Controllers
         {
             UpdateProdutoDAL updateProdutoDAL = new UpdateProdutoDAL();
             updateProdutoDAL.EditarProduto(produto);
-            return RedirectToAction("Listar");
+            return RedirectToAction(nameof(Listar));
         }
 
 

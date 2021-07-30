@@ -35,7 +35,7 @@ namespace CRUD_ADO.Controllers
         {
             DeleteProdutoCarrinhoDAL delProdCarrinhoDAL = new DeleteProdutoCarrinhoDAL();
             delProdCarrinhoDAL.RemoverProdutoCarrinho(id);
-            return RedirectToAction("ListarProdutosDoCarrinho");
+            return RedirectToAction(nameof(ListarProdutosDoCarrinho));
         }
 
 

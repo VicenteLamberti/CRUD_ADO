@@ -24,7 +24,7 @@ namespace CRUD_ADO.Controllers
         {
             if (userModel == null)
             {
-                return RedirectToAction("Logar");
+                return RedirectToAction(nameof(Logar));
             }
             bool autenticado = IsUserAuthenticated(userModel);
 
